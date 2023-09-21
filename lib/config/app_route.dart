@@ -1,5 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:discuss_app/controller/c_add_topic.dart';
+import 'package:discuss_app/controller/c_profile.dart';
 import 'package:discuss_app/page/home_page.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../model/user.dart';
 import '../page/erorr_page.dart';
@@ -11,6 +17,8 @@ class AppRoute {
   static const home = '/';
   static const login = '/login';
   static const register = '/register';
+  static const addTopic = '/add-topic';
+  static const profile = '/profile';
 
   static GoRouter routerConfig = GoRouter(
     errorBuilder: (context, state) => ErorrPage(
@@ -41,6 +49,24 @@ class AppRoute {
       GoRoute(
         path: register,
         builder: (context, state) => RegisterPage(),
+      ),
+      GoRoute(
+        path: register,
+        builder: (context, state) => RegisterPage(),
+      ),
+      GoRoute(
+        path: addTopic,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CAddTopic(),
+          child: Scaffold(),
+        ),
+      ),
+      GoRoute(
+        path: profile,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CProfile(),
+          child: Scaffold(),
+        ),
       ),
     ],
   );
