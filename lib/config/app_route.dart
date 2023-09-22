@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:discuss_app/controller/c_add_topic.dart';
+import 'package:discuss_app/controller/c_comment.dart';
+import 'package:discuss_app/controller/c_follower.dart';
+import 'package:discuss_app/controller/c_following.dart';
 import 'package:discuss_app/controller/c_profile.dart';
+import 'package:discuss_app/controller/c_search.dart';
 import 'package:discuss_app/page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -19,6 +23,10 @@ class AppRoute {
   static const register = '/register';
   static const addTopic = '/add-topic';
   static const profile = '/profile';
+  static const search = '/search';
+  static const follower = '/follower';
+  static const following = '/following';
+  static const comment = '/comment';
 
   static GoRouter routerConfig = GoRouter(
     errorBuilder: (context, state) => ErorrPage(
@@ -65,6 +73,34 @@ class AppRoute {
         path: profile,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CProfile(),
+          child: Scaffold(),
+        ),
+      ),
+      GoRoute(
+        path: search,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CSearch(),
+          child: Scaffold(),
+        ),
+      ),
+      GoRoute(
+        path: follower,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CFollower(),
+          child: Scaffold(),
+        ),
+      ),
+      GoRoute(
+        path: following,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CFollowing(),
+          child: Scaffold(),
+        ),
+      ),
+      GoRoute(
+        path: comment,
+        builder: (context, state) => ChangeNotifierProvider(
+          create: (_) => CComment(),
           child: Scaffold(),
         ),
       ),
