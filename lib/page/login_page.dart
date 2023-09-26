@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
 
         DInfo.dialogSuccess(context, 'Login Success!');
         DInfo.closeDialog(context, actionAfterClose: () {
-          //  context.go(AppRoute.home);
+          context.go(AppRoute.home);
         });
       } else {
         DInfo.snackBarError(context, 'Login failed!');
@@ -114,7 +114,7 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Belum punya akun?",
+                          "Not have an account?",
                           style: TextStyle(
                             color: Colors.white70,
                           ),
