@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:discuss_app/config/app.color.dart';
 import 'package:discuss_app/config/app_route.dart';
 import 'package:discuss_app/controller/c_account.dart';
@@ -33,11 +35,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: const Color.fromARGB(255, 0, 119, 255),
-          colorScheme: ColorScheme.light().copyWith(
-            primary: AppColor.primay,
-          ),
-        ),
+            primaryColor: AppColor.primay,
+            colorScheme: ColorScheme.light().copyWith(
+              primary: AppColor.primay,
+              secondary: AppColor.primay,
+            ),
+            floatingActionButtonTheme: FloatingActionButtonThemeData(
+              backgroundColor: AppColor.primay,
+              foregroundColor: AppColor.primay,
+            )),
         routerConfig: AppRoute.routerConfig,
       ),
     );
