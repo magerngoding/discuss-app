@@ -1,11 +1,4 @@
 class User {
-  String id;
-  String username;
-  String password;
-  String image;
-  String createdAt;
-  String updatedAt;
-
   User({
     required this.id,
     required this.username,
@@ -14,6 +7,13 @@ class User {
     required this.createdAt,
     required this.updatedAt,
   });
+
+  String id;
+  String username;
+  String password;
+  String image;
+  String createdAt;
+  String updatedAt;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
@@ -24,5 +24,12 @@ class User {
         updatedAt: json["updated_at"],
       );
 
-  toJson() {}
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "username": username,
+        "password": password,
+        "image": image,
+        "created_at": createdAt,
+        "updated_at": updatedAt,
+      };
 }
