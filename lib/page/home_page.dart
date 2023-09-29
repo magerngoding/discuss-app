@@ -52,6 +52,7 @@ class HomePage extends StatelessWidget {
           onPressed: () {},
           mini: true,
           tooltip: 'Create New Topic',
+          child: Icon(Icons.create),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomNavigationBar(

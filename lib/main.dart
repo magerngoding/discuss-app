@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             ),
             floatingActionButtonTheme: FloatingActionButtonThemeData(
               backgroundColor: AppColor.primay,
-              foregroundColor: AppColor.primay,
+              foregroundColor: Colors.white,
             )),
         routerConfig: AppRoute.routerConfig,
       ),

@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class MyTopicFragment extends StatelessWidget {
   const MyTopicFragment({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: Center(
+        child: Text('Topic'),
+      ),
+    );
   }
 }
