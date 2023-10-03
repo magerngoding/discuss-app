@@ -11,21 +11,18 @@ class TopicSource {
     String title,
     String description,
     String images,
-    String base64code,
+    String base64codes,
     String idUser,
   ) async {
-    String url = '${Api.topic}/create.php'; //topic adalah nama folder
+    String url = '${Api.topic}/create.php';
     try {
-      Response response = await Client().post(
-        Uri.parse(url),
-        body: {
-          'title': title,
-          'description': description,
-          'images': images,
-          'base64code': base64code,
-          'id_user': idUser,
-        },
-      );
+      Response response = await Client().post(Uri.parse(url), body: {
+        'title': title,
+        'description': description,
+        'images': images,
+        'base64codes': base64codes,
+        'id_user': idUser,
+      });
       DMethod.printTitle('Topic Source - create', response.body);
       Map responseBody = jsonDecode(response.body);
       return responseBody['success'];

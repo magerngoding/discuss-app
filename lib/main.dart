@@ -2,6 +2,7 @@
 
 import 'package:discuss_app/config/app.color.dart';
 import 'package:discuss_app/config/app_route.dart';
+import 'package:discuss_app/config/session.dart';
 import 'package:discuss_app/controller/c_account.dart';
 import 'package:discuss_app/controller/c_explore.dart';
 import 'package:discuss_app/controller/c_feed.dart';
@@ -32,9 +33,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => CMyTopic()),
         ChangeNotifierProvider(create: (_) => CAccount()),
       ],
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
+      builder: (context, child) {
+        Session.getUser().then((user) {
+          if (user != null) context.read<CUser>().data = user;
+        });
+
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
             primaryColor: AppColor.primay,
             colorScheme: ColorScheme.light().copyWith(
               primary: AppColor.primay,
@@ -43,9 +49,11 @@ class MyApp extends StatelessWidget {
             floatingActionButtonTheme: FloatingActionButtonThemeData(
               backgroundColor: AppColor.primay,
               foregroundColor: Colors.white,
-            )),
-        routerConfig: AppRoute.routerConfig,
-      ),
+            ),
+          ),
+          routerConfig: AppRoute.routerConfig,
+        );
+      },
     );
   }
 }

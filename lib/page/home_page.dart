@@ -40,38 +40,43 @@ class HomePage extends StatelessWidget {
       },
     ];
 
-    return Consumer<CHome>(builder: (context, _, child) {
-      return Scaffold(
-        body: Padding(
-          padding: EdgeInsets.only(
-            top: 30,
+    return Consumer<CHome>(
+      builder: (context, _, child) {
+        return Scaffold(
+          body: Padding(
+            padding: EdgeInsets.only(
+              top: 30,
+            ),
+            child: menu[_.indexMenu]['view'],
           ),
-          child: menu[_.indexMenu]['view'],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          mini: true,
-          tooltip: 'Create New Topic',
-          child: Icon(Icons.create),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomNavigationBar(
-            onTap: (newIndex) {
-              _.indexMenu = newIndex;
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              context.push(AppRoute.addTopic);
             },
-            currentIndex: _.indexMenu,
-            type: BottomNavigationBarType.fixed,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            items: menu.map(
-              (e) {
-                return BottomNavigationBarItem(
-                  icon: Icon(e['icon']),
-                  label: e['label'],
-                );
+            mini: true,
+            tooltip: 'Create New Topic',
+            child: Icon(Icons.create),
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: BottomNavigationBar(
+              onTap: (newIndex) {
+                _.indexMenu = newIndex;
               },
-            ).toList()),
-      );
-    });
+              currentIndex: _.indexMenu,
+              type: BottomNavigationBarType.fixed,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              items: menu.map(
+                (e) {
+                  return BottomNavigationBarItem(
+                    icon: Icon(e['icon']),
+                    label: e['label'],
+                  );
+                },
+              ).toList()),
+        );
+      },
+    );
   }
 }
