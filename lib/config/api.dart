@@ -1,5 +1,5 @@
 class Api {
-  static const _baseUrl = "http://192.168.1.2/course_api_discuss";
+  static const _baseUrl = "http://192.168.1.3/course_api_discuss";
   static const comment = "$_baseUrl/comment";
   static const follow = "$_baseUrl/follow";
   static const topic = "$_baseUrl/topic";
