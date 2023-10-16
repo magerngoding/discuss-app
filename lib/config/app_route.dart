@@ -10,6 +10,7 @@ import 'package:discuss_app/model/topic.dart';
 import 'package:discuss_app/page/add_topic.dart';
 import 'package:discuss_app/page/detail_topic_page.dart';
 import 'package:discuss_app/page/home_page.dart';
+import 'package:discuss_app/page/profile_page.dart';
 import 'package:discuss_app/page/update_topic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -65,10 +66,6 @@ class AppRoute {
         builder: (context, state) => RegisterPage(),
       ),
       GoRoute(
-        path: register,
-        builder: (context, state) => RegisterPage(),
-      ),
-      GoRoute(
         path: addTopic,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CAddTopic(),
@@ -79,7 +76,9 @@ class AppRoute {
         path: profile,
         builder: (context, state) => ChangeNotifierProvider(
           create: (_) => CProfile(),
-          child: Scaffold(),
+          child: ProfilePage(
+            user: state.extra as User,
+          ),
         ),
       ),
       GoRoute(
