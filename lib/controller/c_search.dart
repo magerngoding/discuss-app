@@ -1,12 +1,12 @@
-import 'package:discuss_app/model/user.dart';
-import 'package:discuss_app/source/topic_source.dart';
-import 'package:discuss_app/source/user_source.dart';
 import 'package:flutter/foundation.dart';
 
 import '../model/topic.dart';
+import '../model/user.dart';
+import '../source/topic_source.dart';
+import '../source/user_source.dart';
 
 class CSearch extends ChangeNotifier {
-  List<String> get filters => ['Topic', 'Users'];
+  List<String> get filters => ['Topic', 'User'];
 
   String _filter = 'Topic';
   String get filter => _filter;
@@ -17,7 +17,7 @@ class CSearch extends ChangeNotifier {
 
   search(String query) {
     if (filter == 'Topic') {
-      setTopics(query);
+      setTopisc(query);
     } else {
       setUsers(query);
     }
@@ -25,7 +25,7 @@ class CSearch extends ChangeNotifier {
 
   List<Topic> _topics = [];
   List<Topic> get topics => _topics;
-  setTopics(String query) async {
+  setTopisc(String query) async {
     _topics = await TopicSource.search(query);
     notifyListeners();
   }
