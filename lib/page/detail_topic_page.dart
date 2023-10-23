@@ -130,10 +130,10 @@ class DetailTopicPage extends StatelessWidget {
         padding: EdgeInsets.all(16),
         child: DButtonElevation(
           onClick: () {
-            // context.push(
-            //   AppRoute.comment,
-            //   extra: topic,
-            // );
+            context.push(
+              AppRoute.comment,
+              extra: topic,
+            );
           },
           height: 40,
           mainColor: Theme.of(context).primaryColor,
