@@ -76,6 +76,7 @@ class CommenPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CircleAvatar(
                           radius: 18,
@@ -98,7 +99,7 @@ class CommenPage extends StatelessWidget {
                                 ),
                                 if (comment.toUser.id != topic.idUser)
                                   Text(
-                                    ' to',
+                                    ' to ',
                                     style: TextStyle(
                                       color: Colors.grey,
                                       fontSize: 14.0,
@@ -122,7 +123,7 @@ class CommenPage extends StatelessWidget {
                             ),
                             DView.spaceHeight(4),
                             Text(comment.description),
-                            DView.spaceHeight(8),
+                            if (comment.image != '') DView.spaceHeight(8),
                             if (comment.image != '')
                               GestureDetector(
                                 onTap: () {
@@ -159,7 +160,68 @@ class CommenPage extends StatelessWidget {
                                   child: Image.network(
                                       '${Api.imageComment}/${comment.image}'),
                                 ),
-                              )
+                              ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    cComment.setReplyTo(comment.fromUser);
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.reply,
+                                        size: 13,
+                                      ),
+                                      Text(
+                                        'Reply',
+                                        style: TextStyle(
+                                          fontSize: 12.0,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                if (cUser.data!.id == comment.fromIdUser)
+                                  const SizedBox(
+                                    height: 12.0,
+                                  ),
+                                if (cUser.data!.id == comment.fromIdUser)
+                                  GestureDetector(
+                                    onTap: () {
+                                      CommentSource.delete(
+                                        comment.id,
+                                        comment.image,
+                                      ).then((success) {
+                                        if (success) {
+                                          cComment.setComment(topic);
+                                        }
+                                      });
+                                    },
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.delete,
+                                          size: 13,
+                                        ),
+                                        Text(
+                                          'Delete',
+                                          style: TextStyle(
+                                            fontSize: 12.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                              ],
+                            ),
                           ],
                         ))
                       ],
@@ -192,7 +254,7 @@ class CommenPage extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'To: ',
+                              'To :',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12.0,
